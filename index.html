@@ -5,26 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jericho Jake Guevara | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary: #2563eb;
-            --dark-blue: #0f172a; /* Main Dark Blue */
-            --bg-deep: #020617;   /* Deeper Blue for contrast */
+            --dark-blue: #0f172a; 
+            --bg-deep: #020617;   
             --light: #f8fafc;
             --slate: #94a3b8;
+            --gold: #c5a059; 
             --transition: all 0.3s ease;
             --slider-transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        /* Essential Reset */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         html { scroll-behavior: smooth; }
-        
-        /* DARK BLUE THEME APPLIED */
-        body { background-color: var(--bg-deep); color: var(--light); line-height: 1.6; }
+        body { background-color: var(--bg-deep); color: var(--light); line-height: 1.6; overflow-x: hidden; }
 
-        /* Navigation with Mobile Menu */
+        /* Navigation */
         nav {
             position: fixed; top: 0; width: 100%;
             background: rgba(15, 23, 42, 0.95);
@@ -46,8 +46,6 @@
             transition: var(--transition);
         }
         .nav-links a:hover::after { width: 100%; }
-
-        /* Hamburger Button (Phone) */
         .menu-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
 
         /* Hero Section */
@@ -57,8 +55,6 @@
             background: radial-gradient(circle at center, #1e293b 0%, #020617 100%);
             color: white; padding: 0 10%;
         }
-
-        /* Profile Glow Effect */
         .hero img {
             width: 200px; height: 200px; border-radius: 50%;
             border: 4px solid var(--primary); margin-bottom: 1.5rem;
@@ -70,27 +66,66 @@
             from { box-shadow: 0 0 10px rgba(37, 99, 235, 0.4); }
             to { box-shadow: 0 0 30px rgba(37, 99, 235, 0.8), 0 0 50px rgba(37, 99, 235, 0.4); }
         }
-
         .hero h1 { font-size: 3.5rem; margin-bottom: 0.5rem; }
         
-        /* Typing Headline Animation Styles */
-        .headline { font-size: 1.2rem; color: #cbd5e1; margin-bottom: 2rem; min-height: 1.5rem; }
-        .highlight { color: var(--primary); font-weight: 700; text-shadow: 0 0 10px rgba(37, 99, 235, 0.3); }
+        /* Typing Text Improved */
+        .headline { 
+            font-size: 1.8rem; /* Bigger text */
+            color: #cbd5e1; 
+            margin-bottom: 2rem; 
+            min-height: 2.5rem;
+            font-weight: 600;
+        }
+        .highlight { color: var(--primary); font-weight: 700; }
 
-        /* Resume Button */
-        .btn-resume {
-            background: var(--primary); color: white;
+        .hero-btns { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+
+        .btn-resume, .btn-works {
             padding: 12px 25px; text-decoration: none;
             border-radius: 30px; font-weight: 600;
             transition: var(--transition); display: inline-flex; align-items: center; gap: 10px;
         }
+        .btn-resume { background: var(--primary); color: white; }
         .btn-resume:hover { transform: scale(1.05); background: #1d4ed8; box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4); }
+        
+        .btn-works { background: transparent; color: white; border: 2px solid var(--primary); }
+        .btn-works:hover { background: var(--primary); transform: scale(1.05); }
 
-        /* Section Styling (Changed background to match dark blue theme) */
+        /* Service Ticker */
+        .ticker-container {
+            width: 100%; background: var(--gold); overflow: hidden;
+            padding: 15px 0; border-top: 2px solid #000; border-bottom: 2px solid #000;
+        }
+        .ticker-wrapper { display: flex; white-space: nowrap; animation: ticker 40s linear infinite; }
+        .ticker-item {
+            display: inline-flex; align-items: center; color: #000;
+            font-weight: 600; font-size: 1.1rem; margin-right: 50px; text-transform: uppercase;
+        }
+        .ticker-item i { margin-right: 10px; font-size: 0.8rem; }
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Sections */
         section { padding: 100px 10%; }
-        .section-title { text-align: center; margin-bottom: 50px; font-size: 2.5rem; color: white; }
+        .section-title { 
+            text-align: center; 
+            margin-bottom: 20px; 
+            font-size: 3rem; 
+            color: white; 
+            font-family: 'Poppins', sans-serif; /* Improved Font */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .section-desc {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: var(--slate);
+            font-size: 1.1rem;
+        }
 
-        /* About & Expectation */
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
         .about-img { width: 100%; border-radius: 20px; box-shadow: 20px 20px 0px var(--primary); object-fit: cover; }
         .expectation-box {
@@ -99,64 +134,74 @@
         }
         .expectation-list { display: flex; justify-content: space-between; margin-top: 15px; flex-wrap: wrap; gap: 10px; }
 
-        /* Cards Bump Effect (Dark Mode) */
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
         .card {
             background: #1e293b; padding: 30px; border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(255,255,255,0.05); text-align: center;
-            color: white;
+            border: 1px solid rgba(255,255,255,0.05); text-align: center; color: white;
         }
         .card:hover { transform: translateY(-15px); border-color: var(--primary); box-shadow: 0 20px 25px rgba(0,0,0,0.3); }
         .card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
 
-        /* Tools */
-        .tools-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-        .tool-tag { background: #334155; color: white; padding: 10px 20px; border-radius: 25px; font-weight: 600; border: 1px solid rgba(255,255,255,0.1); }
+        /* Tools Enhanced */
+        .tools-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        .tool-card { 
+            background: #1e293b; padding: 15px 25px; border-radius: 12px; 
+            display: flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,0.1);
+            transition: var(--transition);
+        }
+        .tool-card:hover { background: var(--primary); transform: translateY(-5px); }
+        .tool-card i { font-size: 1.2rem; }
 
-        /* Productivity Section */
+        /* Productivity */
         .productivity-section { text-align: center; background: #0f172a; position: relative; overflow: hidden; }
         .slider-wrapper { position: relative; max-width: 1200px; margin: 0 auto; padding: 0 50px; }
-        .slider-container { display: flex; gap: 25px; transition: var(--slider-transition); will-change: transform; }
-        .sc-card { flex: 0 0 calc(33.333% - 17px); background: #1e293b; border-radius: 12px; overflow: hidden; height: 250px; border: 1px solid rgba(255,255,255,0.1); }
-        .sc-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .slider-container { display: flex; gap: 25px; transition: var(--slider-transition); }
+        .sc-card { flex: 0 0 calc(33.333% - 17px); background: #1e293b; border-radius: 12px; overflow: hidden; height: 250px; }
+        .sc-card img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Slider Arrows */
         .slider-arrow {
             position: absolute; top: 50%; transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.1); border: 1px solid #334155;
             width: 45px; height: 45px; border-radius: 50%; cursor: pointer;
             z-index: 10; display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 1.2rem; transition: var(--transition);
+            color: white; transition: var(--transition);
         }
-        .slider-arrow:hover { background: var(--primary); border-color: var(--primary); }
+        .slider-arrow:hover { background: var(--primary); }
         .arrow-left { left: 0; } .arrow-right { right: 0; }
+        .dot-nav { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background: #334155; cursor: pointer; }
+        .dot.active { background: var(--primary); }
 
-        .dot { background-color: #334155; }
-        .dot.active { background-color: var(--primary); }
-
-        /* Footer & Contact */
-        footer { background: #020617; color: white; padding: 80px 10% 20px; border-top: 1px solid rgba(255,255,255,0.05); }
-        .footer-content { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
-        .contact-form input, .contact-form textarea {
-            width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #334155; background: #1e293b; color: white;
+        /* Footer & Contact Improved */
+        footer { background: #020617; color: white; padding: 80px 10% 40px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-content { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; }
+        .contact-info h2 { font-size: 2rem; margin-bottom: 20px; color: var(--primary); }
+        .contact-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; font-size: 1.1rem; }
+        .contact-item i { color: var(--primary); width: 20px; }
+        
+        .social-links { display: flex; gap: 15px; margin-top: 30px; }
+        .social-links a { 
+            width: 45px; height: 45px; background: #1e293b; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; color: white; 
+            text-decoration: none; transition: var(--transition); font-size: 1.2rem;
         }
+        .social-links a:hover { background: var(--primary); transform: translateY(-5px); }
 
-        /* Responsive Fixes */
+        .contact-form { background: #0f172a; padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
+        .form-group { margin-bottom: 15px; }
+        .contact-form input, .contact-form textarea {
+            width: 100%; padding: 14px; border-radius: 8px; border: 1px solid #334155; background: #1e293b; color: white; font-size: 1rem;
+        }
+        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--primary); }
+
+        /* Mobile */
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
             .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: #0f172a;
-                padding: 2rem;
-                border-bottom: 2px solid var(--primary);
-                box-shadow: 0 10px 10px rgba(0,0,0,0.3);
+                display: none; flex-direction: column; position: absolute;
+                top: 100%; left: 0; width: 100%; background: #0f172a; padding: 2rem;
             }
             .nav-links.active { display: flex; }
             .nav-links li { margin: 1rem 0; margin-left: 0; }
@@ -170,13 +215,12 @@
 
     <nav>
         <div class="logo">PORTFOLIO</div>
-        <div class="menu-toggle" id="mobile-menu">
-            <i class="fas fa-bars"></i>
-        </div>
+        <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
         <ul class="nav-links" id="nav-list">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#services">Services</a></li>
+            <li><a href="#tools">Tools</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -186,17 +230,33 @@
         <img src="assets/jericho-1.jpg" alt="Jericho Jake Guevara">
         <h1>Jericho Jake Guevara</h1>
         <p class="headline" id="typing-text"></p>
-        <a href="assets/cvjj1.pdf" target="_blank" download class="btn-resume">
-            <i class="fas fa-download"></i> Download My Resume
-        </a>
+        <div class="hero-btns">
+            <a href="assets/cvjj1.pdf" target="_blank" download class="btn-resume">
+                <i class="fas fa-download"></i> Download My Resume
+            </a>
+            <a href="#productivity" class="btn-works">
+                <i class="fas fa-eye"></i> View Works
+            </a>
+        </div>
     </section>
+
+    <div class="ticker-container">
+        <div class="ticker-wrapper">
+            <div class="ticker-item"><i class="fas fa-sparkle"></i> Customer Support</div>
+            <div class="ticker-item"><i class="fas fa-sparkle"></i> Administrative Works</div>
+            <div class="ticker-item"><i class="fas fa-sparkle"></i> Graphic Design</div>
+            <div class="ticker-item"><i class="fas fa-sparkle"></i> Website Management</div>
+            <div class="ticker-item"><i class="fas fa-sparkle"></i> Data Entry & Research</div>
+            <div class="ticker-item"><i class="fas fa-sparkle"></i> Shopify Expert</div>
+        </div>
+    </div>
 
     <section id="about">
         <h2 class="section-title">About Me</h2>
         <div class="about-grid">
             <img src="assets/jericho-1.jpg" class="about-img" alt="Jericho Profile">
             <div>
-                <p>I’m a quick learner graduate with a professional degree in IT from <strong>Polytechnic University of the Philippines</strong>. I am equipped with strong skills and results-driven high-quality works. Experienced in customer service support, ecommerce operation, graphic design, administrative works, and website management.</p>
+                <p>I’m a quick learner graduate with a professional degree in IT from <strong>Polytechnic University of the Philippines</strong>. I am equipped with strong skills and results-driven high-quality works.</p>
                 <div class="expectation-box">
                     <h3>What can you expect from me?</h3>
                     <div class="expectation-list">
@@ -223,37 +283,34 @@
 
     <section id="tools">
         <h2 class="section-title">Tools I Use</h2>
+        <p class="section-desc">I stay inside modern productivity, communication, and scheduling tools so your operations stay organized and easy to manage.</p>
         <div class="tools-list">
-            <span class="tool-tag">Trello</span><span class="tool-tag">Asana</span><span class="tool-tag">Zendesk</span>
-            <span class="tool-tag">Gorgias</span><span class="tool-tag">Mailchimp</span><span class="tool-tag">Klaviyo</span>
-            <span class="tool-tag">Salesforce</span><span class="tool-tag">Google Workspace</span><span class="tool-tag">Canva</span>
-            <span class="tool-tag">Slack</span><span class="tool-tag">MS Teams</span>
+            <div class="tool-card"><i class="fas fa-tasks"></i> Trello</div>
+            <div class="tool-card"><i class="fas fa-project-diagram"></i> Asana</div>
+            <div class="tool-card"><i class="fas fa-headset"></i> Zendesk</div>
+            <div class="tool-card"><i class="fas fa-comments"></i> Gorgias</div>
+            <div class="tool-card"><i class="fas fa-envelope-open-text"></i> Mailchimp</div>
+            <div class="tool-card"><i class="fas fa-chart-line"></i> Klaviyo</div>
+            <div class="tool-card"><i class="fab fa-salesforce"></i> Salesforce</div>
+            <div class="tool-card"><i class="fab fa-google"></i> Workspace</div>
+            <div class="tool-card"><i class="fas fa-palette"></i> Canva</div>
+            <div class="tool-card"><i class="fab fa-slack"></i> Slack</div>
+            <div class="tool-card"><i class="fas fa-users"></i> MS Teams</div>
         </div>
     </section>
 
     <section id="experience">
         <h2 class="section-title">Professional Experience</h2>
         <div class="grid-container">
-            <div class="card">
-                <h4>Foundever Corp.</h4>
-                <p>Customer Service Representative</p>
-                <small>2025 - 2026</small>
-            </div>
-            <div class="card">
-                <h4>Trends and Tech Inc.</h4>
-                <p>Technology Engineer</p>
-                <small>2024</small>
-            </div>
-            <div class="card">
-                <h4>SNRDC</h4>
-                <p>Credit & Documentation Specialist</p>
-                <small>2023</small>
-            </div>
+            <div class="card"><h4>Foundever Corp.</h4><p>CSR</p><small>2025 - 2026</small></div>
+            <div class="card"><h4>Trends and Tech Inc.</h4><p>IT Engineer</p><small>2024</small></div>
+            <div class="card"><h4>SNRDC</h4><p>Documentation Specialist</p><small>2023</small></div>
         </div>
     </section>
 
     <section id="productivity" class="productivity-section">
         <h2 class="section-title">Productivity</h2>
+        <p class="section-desc">The portfolio is based on Shopify Admin tasks, such as listing products, creating collections, checkout process, and designing themes.</p>
         <div class="slider-wrapper">
             <button class="slider-arrow arrow-left" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
             <button class="slider-arrow arrow-right" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
@@ -269,10 +326,10 @@
 
     <footer id="contact">
         <div class="footer-content">
-            <div>
-                <h2>Contact Details</h2>
-                <p style="margin: 15px 0;"><i class="fas fa-envelope"></i> jerichojakeguevara14@gmail.com</p>
-                <p><i class="fas fa-phone"></i> +639773550189</p>
+            <div class="contact-info">
+                <h2>Get In Touch</h2>
+                <div class="contact-item"><i class="fas fa-envelope"></i> jerichojakeguevara14@gmail.com</div>
+                <div class="contact-item"><i class="fas fa-phone"></i> +639773550189</div>
                 <div class="social-links">
                     <a href="https://www.facebook.com/jerichojake.26?" target="_blank"><i class="fab fa-facebook"></i></a>
                     <a href="https://wa.me/639773550189" target="_blank"><i class="fab fa-whatsapp"></i></a>
@@ -280,118 +337,114 @@
                     <a href="https://t.me/jerichojake" target="_blank"><i class="fab fa-telegram"></i></a>
                 </div>
             </div>
-            <form class="contact-form">
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" placeholder="Email Address" required>
-                <textarea rows="4" placeholder="Message"></textarea>
-                <button type="submit" class="btn-resume" style="border:none; cursor:pointer; width:100%; justify-content:center;">Send Message</button>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-group"><input type="text" id="name" placeholder="Full Name" required></div>
+                <div class="form-group"><input type="email" id="email" placeholder="Email Address" required></div>
+                <div class="form-group"><input type="text" id="subject" placeholder="Subject" required></div>
+                <div class="form-group"><textarea id="message" rows="5" placeholder="Your Message" required></textarea></div>
+                <button type="submit" class="btn-resume" style="border:none; cursor:pointer; width:100%; justify-content:center;">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
             </form>
         </div>
     </footer>
 
     <script>
-        // --- 1. SLOW MOTION TYPING EFFECT WITH HIGHLIGHT ---
+        // --- IMPROVED CONTINUOUS TYPING EFFECT ---
         const typingText = document.getElementById('typing-text');
-        const originalPhrase = "Ecommerce VA | Customer Support";
-        let i = 0;
+        const phrases = ["Ecommerce VA", "Customer Support"]; // Dagdagan mo lang dito kung may gusto ka pang i-add
+        let phraseIdx = 0;
+        let charIdx = 0;
+        let isDeleting = false;
+        
+        function type() {
+    const currentPhrase = phrases[phraseIdx];
+    
+    if (isDeleting) {
+        // Binabawasan ang text (Backward)
+        typingText.innerHTML = `<span class="highlight">${currentPhrase.substring(0, charIdx - 1)}</span>`;
+        charIdx--;
+    } else {
+        // Dinadagdagan ang text (Forward)
+        typingText.innerHTML = `<span class="highlight">${currentPhrase.substring(0, charIdx + 1)}</span>`;
+        charIdx++;
+    }
 
-        function typeWriter() {
-            if (i < originalPhrase.length) {
-                // I-check kung ang sinusulat ay part ng Ecommerce VA o Customer Support para lagyan ng highlight class
-                let currentText = originalPhrase.substring(0, i + 1);
-                
-                // Logic para i-wrap sa span highlight yung specific keywords
-                let formattedText = currentText
-                    .replace("Ecommerce VA", "<span class='highlight'>Ecommerce VA</span>")
-                    .replace("Customer Support", "<span class='highlight'>Customer Support</span>");
-                
-                typingText.innerHTML = formattedText;
-                i++;
-                setTimeout(typeWriter, 100); // Speed ng pagsulat (100ms)
-            }
-        }
+    // Bilis ng pag-type
+    let typeSpeed = isDeleting ? 100 : 150;
 
-        // --- 2. MOBILE MENU LOGIC ---
+    // Logic kung kailan hihinto o magdedelete
+    if (!isDeleting && charIdx === currentPhrase.length) {
+        typeSpeed = 2000; // Pause sa dulo kapag buo na ang salita (2 seconds)
+        isDeleting = true;
+    } else if (isDeleting && charIdx === 0) {
+        isDeleting = false;
+        phraseIdx = (phraseIdx + 1) % phrases.length; // Lipat sa susunod na phrase
+        typeSpeed = 500; // Konting pause bago mag-type ulit
+    }
+
+    setTimeout(type, typeSpeed);
+}
+
+// Siguraduhin na tinatawag ang type() sa window.onload
+window.onload = () => { 
+    type(); 
+    // ...yung ibang functions mo dito like initDots()
+};
+
+        // --- MOBILE MENU ---
         const menuToggle = document.getElementById('mobile-menu');
         const navList = document.getElementById('nav-list');
+        menuToggle.onclick = () => navList.classList.toggle('active');
 
-        menuToggle.addEventListener('click', () => {
-            navList.classList.toggle('active');
-        });
-
-        // Close menu when a link is clicked
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navList.classList.remove('active');
-            });
-        });
-
-        // --- 3. SLIDER LOGIC (Existing) ---
+        // --- SLIDER ---
         const slider = document.getElementById('slider');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const dotNav = document.getElementById('dotNav');
         const cards = document.querySelectorAll('.sc-card');
+        const dotNav = document.getElementById('dotNav');
+        let currentIdx = 0;
 
-        let currentIndex = 0;
-        let cardsPerView = getCardsPerView();
+        function getVisible() { return window.innerWidth <= 768 ? 1 : 3; }
 
-        function createDots() {
+        function updateSlider() {
+            const width = cards[0].offsetWidth + 25;
+            slider.style.transform = `translateX(-${currentIdx * width * getVisible()}px)`;
+            document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === currentIdx));
+        }
+
+        function initDots() {
             dotNav.innerHTML = '';
-            const numDots = Math.ceil(cards.length / cardsPerView);
-            for (let i = 0; i < numDots; i++) {
+            for(let i=0; i<Math.ceil(cards.length/getVisible()); i++) {
                 const dot = document.createElement('div');
-                dot.classList.add('dot');
-                if (i === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToSlide(i));
+                dot.className = 'dot';
+                dot.onclick = () => { currentIdx = i; updateSlider(); };
                 dotNav.appendChild(dot);
             }
         }
 
-        function getCardsPerView() {
-            if (window.innerWidth <= 768) return 1;
-            if (window.innerWidth <= 992) return 2;
-            return 3;
-        }
-
-        function updateSlider() {
-            const cardWidth = cards[0].offsetWidth;
-            const gap = 25;
-            const moveAmount = currentIndex * (cardWidth + gap) * cardsPerView;
-            slider.style.transform = `translateX(-${moveAmount}px)`;
-            document.querySelectorAll('.dot').forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        }
-
-        function goToSlide(index) {
-            currentIndex = index;
-            updateSlider();
-        }
-
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % Math.ceil(cards.length / cardsPerView);
-            updateSlider();
-        });
-
-        prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + Math.ceil(cards.length / cardsPerView)) % Math.ceil(cards.length / cardsPerView);
-            updateSlider();
-        });
-
-        window.addEventListener('resize', () => {
-            cardsPerView = getCardsPerView();
-            currentIndex = 0;
-            createDots();
-            updateSlider();
-        });
-
-        // Initialize Everything
-        window.onload = () => {
-            typeWriter(); // Start typing
-            createDots();
+        document.getElementById('nextBtn').onclick = () => {
+            currentIdx = (currentIdx + 1) % Math.ceil(cards.length/getVisible());
             updateSlider();
         };
+        document.getElementById('prevBtn').onclick = () => {
+            currentIdx = (currentIdx - 1 + Math.ceil(cards.length/getVisible())) % Math.ceil(cards.length/getVisible());
+            updateSlider();
+        };
+
+        // --- SEND MESSAGE LOGIC ---
+        document.getElementById('contactForm').onsubmit = function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const subject = document.getElementById('subject').value;
+            const msg = document.getElementById('message').value;
+            const emailTo = "jerichojakeguevara14@gmail.com";
+            
+            const body = `Name: ${name}%0D%0A%0D%0A${msg}`;
+            window.location.href = `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${body}`;
+        };
+
+        window.onload = () => { type(); initDots(); updateSlider(); };
+        window.onresize = () => { initDots(); updateSlider(); };
     </script>
 </body>
 </html>
